@@ -92,7 +92,7 @@ function get_match_users(un1,un2,start,count){
   return AQL
   (
     `for u in users
-     filter u.username like @un1 && u.username != @un2
+     filter u.username == @un1 && u.username != @un2 // 解决不支持like语法的临时措施
      limit @start , @count
      return u
     `,
